@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite"
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ["@nuxtjs/eslint-module"],
+  modules: ["@nuxtjs/eslint-module", "@nuxtjs/storybook"],
   vite: {
     plugins: [tailwindcss()],
   },
