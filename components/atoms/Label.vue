@@ -15,7 +15,7 @@ const bgColor = ref<string>("")
 onMounted(() => {
   const COLORS = ["green", "blue", "violet", "orange"]
   const randIndex = randomNumberFromRange(0, COLORS.length - 1)
-  bgColor.value = COLORS[randIndex]
+  console.log(randIndex)
 })
 
 const { value } = defineProps({
