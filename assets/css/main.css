@@ -10,8 +10,10 @@
   --color-green-900: #00FF66;
   --color-yellow-500: #FFAD33;
   --color-yellow-900: #EEFF61;
-  --color-grey-500: #F5F5F5;
-  --color-grey-900: #808080
+  --color-grey-100: #F5F5F5;
+  --color-grey-300: #999;
+  --color-grey-500: #7b7b7b;
+  --color-grey-900: #808080;
   --color-white: #FAFAFA;
   --color-white-500: #FBFBFB;
   --color-black: #000;
