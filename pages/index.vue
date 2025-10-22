@@ -1,17 +1,37 @@
 <script setup lang="ts">
-import List from "~/components/organisms/List.vue"
-import Header from "~/components/atoms/Header.vue"
+import Button from "~/components/button/Button.vue"
 </script>
 <template>
-  <div class="text-[red]">
-    <div class="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 class="text-4xl font-bold text-[#50d71e] underline">
-        Hello Tailwind + Nuxt!
-      </h1>
-      <div class="text-red-100">Hello</div>
-    </div>
+  <div>
+    <div>
+      <Button
+        variant="red"
+        size="lg"
+      >
+        Create Account
+      </Button>
 
-    <Header />
-    <List />
+      <Button
+        variant="black"
+        size="md"
+        block
+      >
+        Add To Cart
+      </Button>
+
+      <Button
+        variant="white"
+        size="sm"
+      >
+        Move All To Bag
+      </Button>
+
+      <Button
+        variant="red"
+        size="sm"
+      >
+        View All Products
+      </Button>
+    </div>
   </div>
 </template>
