@@ -57,7 +57,7 @@ const fontSizeClass = computed(() => {
 <template>
   <button
     :class="[
-      'rounded-sm font-medium transition-colors duration-200 text-[16px]',
+      'overflow-hidden font-medium transition-colors duration-200 text-[16px]',
       basePadding,
       variantClasses,
       fontSizeClass,
