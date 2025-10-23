@@ -1,23 +1,25 @@
 <script setup lang="ts">
 import { computed } from "vue"
 
-const props = defineProps({
+type Variant = "primary" | "secondary" | "thirdary"
+
+const { variant, size, block } = defineProps({
   variant: {
-    type: String,
-    default: "red", // 'red' | 'black' | 'white'
+    type: String as () => Variant,
+    default: "primary",
   },
   size: {
-    type: String,
-    default: "md", // 'sm' | 'md' | 'lg'
+    type: String as () => "sm" | "md" | "lg",
+    default: "md",
   },
   block: {
     type: Boolean,
-    default: false, // true = full width
+    default: false,
   },
 })
 
 const basePadding = computed(() => {
-  switch (props.size) {
+  switch (size) {
     case "sm":
       return "px-[48px] py-[16px]"
     case "md":
@@ -25,31 +27,20 @@ const basePadding = computed(() => {
     case "lg":
       return "px-[122px] py-[16px]"
     default:
-      return props.variant === "black"
+      return variant === "secondary"
         ? "px-3 py-1.5 text-sm"
         : "px-5 py-2.5 text-base"
   }
 })
 
 const variantClasses = computed(() => {
-  switch (props.variant) {
-    case "black":
-      return "bg-black text-white hover:bg-gray-900 cursor-pointer"
-    case "white":
-      return "bg-white text-black border border-grey-900 hover:bg-white-500 cursor-pointer"
-    default: // red
-      return "bg-red-500 text-white hover:bg-red-400 cursor-pointer"
-  }
-})
-
-const fontSizeClass = computed(() => {
-  switch (props.variant) {
-    case "black":
-      return "text-sm"
-    case "white":
-      return "text-base"
-    default: // red
-      return "text-[16px]"
+  switch (variant) {
+    case "secondary":
+      return "bg-black text-white text-[16px] hover:bg-gray-900 cursor-pointer"
+    case "thirdary":
+      return "bg-white text-black text-[16px] border border-grey-900 hover:bg-white-500 cursor-pointer"
+    default: // primary
+      return "rounded-sm bg-red-500 text-white text-[16px] hover:bg-red-400 cursor-pointer"
   }
 })
 </script>
@@ -60,8 +51,7 @@ const fontSizeClass = computed(() => {
       'overflow-hidden font-medium transition-colors duration-200 text-[16px]',
       basePadding,
       variantClasses,
-      fontSizeClass,
-      props.block && 'w-full',
+      block && 'w-full',
     ]"
   >
     <slot />

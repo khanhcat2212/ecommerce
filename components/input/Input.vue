@@ -2,10 +2,14 @@
 import { computed } from "vue"
 import { Search, SendHorizonal } from "lucide-vue-next"
 
-const props = defineProps({
+type Variant = "underline" | "box" | "search" | "form" | "direct" | "code"
+
+const emit = defineEmits(["update:modelValue"])
+
+const { variant, icon, placeholder, modelValue } = defineProps({
   variant: {
-    type: String,
-    default: "underline", // 'underline' | 'box' | 'search' | 'form' | 'direct' | 'code'
+    type: String as () => Variant,
+    default: "underline",
   },
   icon: {
     type: String,
@@ -21,8 +25,9 @@ const props = defineProps({
   },
 })
 
+// style container
 const baseClass = computed(() => {
-  switch (props.variant) {
+  switch (variant) {
     case "search":
       return "bg-gray-100 rounded-md px-4 py-3 flex items-center gap-2"
     case "underline":
@@ -37,76 +42,43 @@ const baseClass = computed(() => {
       return "border border-black rounded-sm px-4 py-3 flex items-center"
   }
 })
+
+// style input
+const inputClass = computed(() => {
+  switch (variant) {
+    case "direct":
+      return "bg-black text-white placeholder-gray-500"
+    case "search":
+    case "form":
+      return "bg-gray-100 text-gray-900 placeholder-gray-400"
+    case "code":
+      return "text-gray-900 placeholder-gray-400"
+    default:
+      return "bg-transparent text-gray-500 placeholder-gray-400"
+  }
+})
 </script>
 
 <template>
   <div :class="['w-full', baseClass]">
-    <!-- Search -->
-    <template v-if="variant === 'search'">
-      <input
-        :placeholder="placeholder"
-        class="bg-gray-100 w-full outline-none text-grey-900 placeholder-gray-400 text-[16px]"
-        :value="modelValue"
-        @input="
-          $emit('update:modelValue', ($event.target as HTMLInputElement).value)
-        "
-      />
-      <Search
-        v-if="icon === 'search'"
-        class="w-5 h-5 text-black cursor-pointer"
-      />
-    </template>
+    <input
+      :placeholder="placeholder"
+      :value="modelValue"
+      class="w-full outline-none text-[16px]"
+      :class="inputClass"
+      @input="
+        emit('update:modelValue', ($event.target as HTMLInputElement).value)
+      "
+    />
 
-    <!-- Form -->
-    <template v-else-if="variant === 'form'">
-      <input
-        :placeholder="placeholder"
-        class="bg-gray-100 w-full outline-none text-grey-500 placeholder-gray-500 text-[16px]"
-        :value="modelValue"
-        @input="
-          $emit('update:modelValue', ($event.target as HTMLInputElement).value)
-        "
-      />
-    </template>
-
-    <!-- Direct -->
-    <template v-else-if="variant === 'direct'">
-      <input
-        :placeholder="placeholder"
-        class="bg-black w-full outline-none text-white placeholder-grey-500 text-[16px]"
-        :value="modelValue"
-        @input="
-          $emit('update:modelValue', ($event.target as HTMLInputElement).value)
-        "
-      />
-      <SendHorizonal
-        v-if="icon === 'send'"
-        class="w-5 h-5 text-white cursor-pointer"
-      />
-    </template>
-
-    <!-- Code -->
-    <template v-else-if="variant === 'code'">
-      <input
-        :placeholder="placeholder"
-        class="w-full outline-none text-gray-900 placeholder-gray-400 text-[16px]"
-        :value="modelValue"
-        @input="
-          $emit('update:modelValue', ($event.target as HTMLInputElement).value)
-        "
-      />
-    </template>
-
-    <!-- Underline -->
-    <template v-else>
-      <input
-        :placeholder="placeholder"
-        class="bg-transparent w-full outline-none text-gray-500 placeholder-gray-400 text-[16px]"
-        :value="modelValue"
-        @input="
-          $emit('update:modelValue', ($event.target as HTMLInputElement).value)
-        "
-      />
-    </template>
+    <!-- optional icons -->
+    <Search
+      v-if="variant === 'search' && icon === 'search'"
+      class="w-5 h-5 text-black cursor-pointer"
+    />
+    <SendHorizonal
+      v-else-if="variant === 'direct' && icon === 'send'"
+      class="w-5 h-5 text-white cursor-pointer"
+    />
   </div>
 </template>

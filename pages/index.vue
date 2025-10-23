@@ -1,44 +1,28 @@
 <script setup lang="ts">
-import { Camera, Monitor, Smartphone } from "lucide-vue-next"
-import Card from "~/components/card/Card.vue"
+import Banner from "@/components/banner/Banner.vue"
+
+const slides = [
+  {
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9uPEvaHJ3SDT_Qp73SqM-Yg512aKoHdadsQ&s",
+    subtitle: "iPhone 14 Series",
+    title: "Up to 10%\noff Voucher",
+    image:
+      "https://www.apple.com/newsroom/images/product/iphone/standard/Apple-iPhone-14-Pro-iPhone-14-Pro-Max-hero-220907_Full-Bleed-Image.jpg.large.jpg",
+    bgColor: "bg-black",
+    textColor: "text-white",
+  },
+  {
+    title: "Save up to 15%",
+    image:
+      "https://img.freepik.com/premium-photo/close-up-toy-car-against-black-background_1048944-9337078.jpg",
+    bgColor: "bg-black",
+    textColor: "text-white",
+  },
+]
 </script>
+
 <template>
-  <div>
-    <div class="flex flex-col gap-2 w-[270px]">
-      <!-- Product Card -->
-      <Card
-        variant="product"
-        title="HAVIT HV-G92 Gamepad"
-        image="https://www.pngall.com/wp-content/uploads/4/USB-Gamepad-PNG-Image.png"
-        price="$120"
-        old-price="$160"
-        discount="40%"
-        :rating="4.5"
-        :ratenum="88"
-      />
-
-      <!-- Category Card -->
-      <div class="grid grid-cols-3 gap-4">
-        <Card
-          variant="category"
-          :title="'Camera'"
-          :icon="Camera"
-        />
-        <Card
-          variant="category"
-          :title="'Monitor'"
-          :icon="Monitor"
-        />
-        <Card
-          variant="category"
-          :title="'Smartphone'"
-          :icon="Smartphone"
-        />
-      </div>
-
-      <!-- Service Card -->
-      <!-- <Card variant="service" title="FREE AND FAST DELIVERY" description="Free delivery for all orders over $140"
-        icon="ri-truck-line" /> -->
-    </div>
+  <div class="w-[850px]">
+    <Banner :slides="slides" />
   </div>
 </template>
