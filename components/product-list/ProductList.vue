@@ -1,17 +1,7 @@
 <script setup lang="ts">
 import { ArrowLeft, ArrowRight } from "lucide-vue-next"
 import ProductListScrollable from "./ProductListScrollable.vue"
-
-interface Product {
-  title: string
-  image: string
-  price: string
-  oldPrice?: string
-  discount?: string
-  rating?: number
-  ratenum?: number
-  colors?: string[]
-}
+import type { Product } from "~/interface/product"
 
 const { variant, products, row, caption } = defineProps({
   variant: {

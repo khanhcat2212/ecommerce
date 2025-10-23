@@ -3,16 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/vue"
 import "swiper/css"
 import "swiper/css/pagination"
 import { Pagination, Autoplay } from "swiper/modules"
-
-interface Slide {
-  title?: string
-  subtitle?: string
-  description?: string
-  image: string
-  logo?: string
-  bgColor?: string
-  textColor?: string
-}
+import type { Slide } from "~/interface/slide"
 
 const { slides } = defineProps<{
   slides: Slide[]
