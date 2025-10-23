@@ -35,7 +35,7 @@ const baseClass = computed(() => {
     case "form":
       return "bg-gray-100 rounded-sm px-4 py-3 flex items-center"
     case "direct":
-      return "bg-black rounded-sm px-4 py-3 flex items-center gap-2"
+      return "bg-black border border-white rounded-sm px-4 py-3 flex items-center gap-2"
     case "code":
       return "border border-black rounded-sm px-4 py-3 flex items-center"
     default:

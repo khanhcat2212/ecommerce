@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Heart, ShoppingCart, User } from "lucide-vue-next"
-import Input from "../input/Input.vue"
+import Input from "@/components/input/Input.vue"
 </script>
 
 <template>

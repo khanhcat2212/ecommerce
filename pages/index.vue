@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Header from "~/components/atoms/Header.vue"
+import Footer from "~/components/atoms/Footer.vue"
 </script>
 
 <template>
   <div>
-    <Header />
+    <Footer />
   </div>
 </template>

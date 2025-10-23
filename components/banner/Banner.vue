@@ -17,7 +17,7 @@ const { slides } = defineProps<{
       :pagination="{ clickable: true }"
       :autoplay="{ delay: 4000, disableOnInteraction: false }"
       loop
-      class="rounded-sm overflow-hidden w-full h-[21.5625rem]"
+      class="rounded-sm overflow-hidden w-full h-86.25"
     >
       <SwiperSlide
         v-for="(slide, i) in slides"
