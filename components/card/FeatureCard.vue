@@ -26,33 +26,33 @@ const { variant, title, description, icon } = defineProps({
 const variantClasses = computed(() => {
   switch (variant) {
     case "achievement":
-      return "w-[270px] h-[230px] border border-grey-200 hover:bg-red-500 hover:border-red-500 transition-all duration-300"
+      return "w-[16.875rem] h-[14.375rem] border border-grey-200 hover:bg-red-500 hover:border-red-500 transition-all duration-300"
     case "service":
-      return "w-[270px] h-[160px]"
+      return "w-[16.875rem] h-[10rem]"
     default:
-      return "w-[270px] h-[160px]"
+      return "w-[16.875rem] h-[10rem]"
   }
 })
 
 const titleClasses = computed(() => {
   switch (variant) {
     case "achievement":
-      return "text-[32px] font-bold"
+      return "text-[2rem] font-bold"
     case "service":
-      return "pt-2 text-[20px] font-semibold"
+      return "pt-2 text-[1.25rem] font-semibold"
     default:
-      return "text-[24px]"
+      return "text-[1.5rem]"
   }
 })
 
 const descriptionClasses = computed(() => {
   switch (variant) {
     case "achievement":
-      return "text-[16px] font-normal"
+      return "text-[1rem] font-normal"
     case "service":
-      return "pt-2 text-[14px] font-normal"
+      return "pt-2 text-[.875rem] font-normal"
     default:
-      return "text-[14px]"
+      return "text-[.875rem]"
   }
 })
 </script>
@@ -65,17 +65,17 @@ const descriptionClasses = computed(() => {
     <div class="flex flex-col items-center justify-center h-full space-y-4">
       <div class="relative flex items-center justify-center">
         <div
-          class="w-[80px] h-[80px] rounded-full bg-gray-200 flex items-center justify-center transition-all duration-300"
+          class="w-[5rem] h-[5rem] rounded-full bg-gray-200 flex items-center justify-center transition-all duration-300"
           :class="variant === 'achievement' ? 'group-hover:bg-white/30' : ''"
         >
           <div
-            class="w-[58px] h-[58px] rounded-full bg-black flex items-center justify-center transition-all duration-300"
+            class="w-[3.625rem] h-[3.625rem] rounded-full bg-black flex items-center justify-center transition-all duration-300"
             :class="variant === 'achievement' ? 'group-hover:bg-white' : ''"
           >
             <component
               :is="icon"
               v-if="icon"
-              class="w-[32px] h-[32px] text-white transition-colors duration-300"
+              class="w-[2rem] h-[2rem] text-white transition-colors duration-300"
               :class="variant === 'achievement' ? 'group-hover:text-black' : ''"
             />
           </div>

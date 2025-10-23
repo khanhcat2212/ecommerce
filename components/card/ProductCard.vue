@@ -40,17 +40,17 @@ const selectedColor = ref<string | null>(null)
     <!-- Ảnh -->
     <div class="relative">
       <div
-        class="relative rounded-sm bg-grey-100 hover:shadow-sm transition p-4 w-[270px] h-[250px] flex items-center justify-center"
+        class="relative rounded-sm bg-grey-100 hover:shadow-sm transition p-4 w-[16.875rem] h-[15.625rem] flex items-center justify-center"
       >
         <img
           :src="image"
           alt=""
-          class="w-full h-[180px] object-contain"
+          class="w-full h-[11.25rem] object-contain"
         />
 
         <span
           v-if="discount"
-          class="absolute top-2.5 left-3 text-[12px] font-medium bg-red-500 text-white rounded-md px-3 py-1"
+          class="absolute top-2.5 left-3 text-[.75rem] font-medium bg-red-500 text-white rounded-md px-3 py-1"
         >
           -{{ discount }}
         </span>
@@ -60,10 +60,10 @@ const selectedColor = ref<string | null>(null)
           class="absolute top-3 right-3 flex flex-col gap-2.5 opacity-0 group-hover:opacity-100 transition"
         >
           <button class="bg-white p-1 rounded-full shadow">
-            <Heart class="text-black text-[10px]" />
+            <Heart class="text-black text-[.625rem]" />
           </button>
           <button class="bg-white p-1 rounded-full shadow">
-            <Eye class="text-black text-[10px]" />
+            <Eye class="text-black text-[.625rem]" />
           </button>
         </div>
 
@@ -81,7 +81,7 @@ const selectedColor = ref<string | null>(null)
     </div>
 
     <!-- Tiêu đề -->
-    <h3 class="mt-4 text-[16px] font-medium text-black">{{ title }}</h3>
+    <h3 class="mt-4 text-[1rem] font-medium text-black">{{ title }}</h3>
 
     <div
       class="mt-2 flex items-center gap-2 flex-wrap"
@@ -102,7 +102,7 @@ const selectedColor = ref<string | null>(null)
         v-if="variant === 'secondary' && rating"
         class="flex items-center"
       >
-        <div class="flex w-[100px] gap-x-1.5">
+        <div class="flex w-[6.25rem] gap-x-1.5">
           <Star
             v-for="n in 5"
             :key="n"
@@ -114,7 +114,7 @@ const selectedColor = ref<string | null>(null)
             class="w-4 h-4"
           />
         </div>
-        <span class="ml-2 text-grey-300 text-[14px]">({{ ratenum }})</span>
+        <span class="ml-2 text-grey-300 text-[.875rem]">({{ ratenum }})</span>
       </div>
     </div>
 
@@ -122,7 +122,7 @@ const selectedColor = ref<string | null>(null)
       v-if="variant === 'primary' && rating"
       class="mt-2 flex items-center"
     >
-      <div class="flex w-[100px] gap-x-1.5">
+      <div class="flex w-[6.25rem] gap-x-1.5">
         <Star
           v-for="n in 5"
           :key="n"
@@ -134,7 +134,7 @@ const selectedColor = ref<string | null>(null)
           class="w-4 h-4"
         />
       </div>
-      <span class="ml-2 text-grey-300 text-[14px]">({{ ratenum }})</span>
+      <span class="ml-2 text-grey-300 text-[.875rem]">({{ ratenum }})</span>
     </div>
 
     <div
@@ -144,7 +144,7 @@ const selectedColor = ref<string | null>(null)
       <div
         v-for="(color, index) in colors"
         :key="index"
-        class="relative w-[20px] h-[20px] cursor-pointer flex items-center justify-center"
+        class="relative w-[1.25rem] h-[1.25rem] cursor-pointer flex items-center justify-center"
         @click="selectedColor = color"
       >
         <div

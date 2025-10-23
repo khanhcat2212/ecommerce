@@ -64,7 +64,7 @@ const inputClass = computed(() => {
     <input
       :placeholder="placeholder"
       :value="modelValue"
-      class="w-full outline-none text-[16px]"
+      class="w-full outline-none text-[1rem]"
       :class="inputClass"
       @input="
         emit('update:modelValue', ($event.target as HTMLInputElement).value)

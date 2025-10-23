@@ -37,7 +37,7 @@ const { variant, products, row, caption } = defineProps({
   <div>
     <!-- Header -->
     <div class="flex items-center justify-between mb-14">
-      <h2 class="text-[36px] font-semibold text-black">{{ caption }}</h2>
+      <h2 class="text-[2.25rem] font-semibold text-black">{{ caption }}</h2>
 
       <div
         v-if="variant === 'scroll'"
