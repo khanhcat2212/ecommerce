@@ -1,17 +1,28 @@
 <script setup lang="ts">
-import List from "~/components/organisms/List.vue"
-import Header from "~/components/atoms/Header.vue"
-</script>
-<template>
-  <div class="text-[red]">
-    <div class="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 class="text-4xl font-bold text-[#50d71e] underline">
-        Hello Tailwind + Nuxt!
-      </h1>
-      <div class="text-red-100">Hello</div>
-    </div>
+import Banner from "@/components/banner/Banner.vue"
 
-    <Header />
-    <List />
+const slides = [
+  {
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9uPEvaHJ3SDT_Qp73SqM-Yg512aKoHdadsQ&s",
+    subtitle: "iPhone 14 Series",
+    title: "Up to 10%\noff Voucher",
+    image:
+      "https://www.apple.com/newsroom/images/product/iphone/standard/Apple-iPhone-14-Pro-iPhone-14-Pro-Max-hero-220907_Full-Bleed-Image.jpg.large.jpg",
+    bgColor: "bg-black",
+    textColor: "text-white",
+  },
+  {
+    title: "Save up to 15%",
+    image:
+      "https://img.freepik.com/premium-photo/close-up-toy-car-against-black-background_1048944-9337078.jpg",
+    bgColor: "bg-black",
+    textColor: "text-white",
+  },
+]
+</script>
+
+<template>
+  <div class="w-[850px]">
+    <Banner :slides="slides" />
   </div>
 </template>

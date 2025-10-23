@@ -8,7 +8,18 @@ export default {
     "~/app.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        black: "#000",
+        while: "#fff",
+        primary: {
+          900: "#DB4444",
+        },
+        green: {
+          500: "#00FF66",
+        },
+      },
+    },
   },
   plugins: [],
 }

@@ -78,7 +78,8 @@
       {
         "**/!(pages)/!(index).vue": "PASCAL_CASE",
         "**/!(constant)/*.{js,ts}": "CAMEL_CASE",
-        "**/(constant)/*.{js,ts}": "SCREAMING_SNAKE_CASE"
+        "**/(constant)/*.{js,ts}": "SCREAMING_SNAKE_CASE",
+        "**/*.stories.js": "KEBAB_CASE"
       },
       {
         "ignoreMiddleExtensions": true
