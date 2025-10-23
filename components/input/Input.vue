@@ -49,6 +49,7 @@ const inputClass = computed(() => {
     case "direct":
       return "bg-black text-white placeholder-gray-500"
     case "search":
+      return "text-[12px] text-grey-500"
     case "form":
       return "bg-gray-100 text-gray-900 placeholder-gray-400"
     case "code":
