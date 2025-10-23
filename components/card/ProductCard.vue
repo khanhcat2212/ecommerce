@@ -1,29 +1,22 @@
 <script setup lang="ts">
 import { Eye, Heart, Star } from "lucide-vue-next"
 
-defineProps({
-  variant: {
-    type: String,
-    default: "product",
-  },
-  title: { type: String, default: "" },
-  image: { type: String, default: "" },
-  price: { type: String, default: "" },
-  oldPrice: { type: String, default: "" },
-  discount: { type: String, default: "" },
-  rating: { type: Number, default: 0 },
-  ratenum: { type: Number, default: 0 },
-  icon: { type: Object, default: null },
-  description: { type: String, default: "" },
-})
+const { title, image, price, oldPrice, discount, rating, ratenum } =
+  defineProps({
+    title: { type: String, default: "" },
+    image: { type: String, default: "" },
+    price: { type: String, default: "" },
+    oldPrice: { type: String, default: "" },
+    discount: { type: String, default: "" },
+    rating: { type: Number, default: 0 },
+    ratenum: { type: Number, default: 0 },
+    icon: { type: Object, default: null },
+    description: { type: String, default: "" },
+  })
 </script>
 
 <template>
-  <!-- Product Card -->
-  <div
-    v-if="variant === 'product'"
-    class="group relative"
-  >
+  <div class="group relative">
     <div class="relative">
       <div
         class="relative rounded-xs bg-grey-100 hover:shadow-sm transition p-4 w-[270px] h-[250px] flex items-center justify-center"
@@ -55,7 +48,7 @@ defineProps({
           class="absolute left-0 right-0 bottom-0 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300"
         >
           <Button
-            variant="black"
+            variant="secondary"
             size="md"
           >
             Add To Cart
@@ -89,39 +82,5 @@ defineProps({
 
       <span class="ml-2 text-grey-300 text-[14px]">({{ ratenum }})</span>
     </div>
-  </div>
-
-  <!-- Category Card -->
-  <div
-    v-else-if="variant === 'category'"
-    class="flex flex-col items-center justify-center text-center rounded-xl border border-gray-200 hover:border-red-500 transition p-6 cursor-pointer"
-  >
-    <div
-      class="w-12 h-12 flex items-center justify-center text-3xl"
-      :class="{ 'bg-red-500 text-white rounded-lg': title === 'Camera' }"
-    >
-      <component
-        :is="icon"
-        class="w-6 h-6"
-      />
-    </div>
-    <p class="mt-3 text-sm font-medium text-gray-700">{{ title }}</p>
-  </div>
-
-  <!-- Service Card -->
-  <div
-    v-else-if="variant === 'service'"
-    class="flex flex-col items-center text-center px-4"
-  >
-    <div
-      class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center mb-4"
-    >
-      <i
-        :class="icon"
-        class="text-xl"
-      ></i>
-    </div>
-    <h4 class="font-semibold text-sm uppercase">{{ title }}</h4>
-    <p class="text-gray-500 text-sm">{{ description }}</p>
   </div>
 </template>
