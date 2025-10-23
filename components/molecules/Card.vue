@@ -28,8 +28,8 @@ const props = defineProps({
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  height: 300px;
-  width: 300px;
+  height: 18.75rem;
+  width: 18.75rem;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
   transition-origin: bottom 50%;

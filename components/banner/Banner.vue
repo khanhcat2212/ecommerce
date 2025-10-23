@@ -3,16 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/vue"
 import "swiper/css"
 import "swiper/css/pagination"
 import { Pagination, Autoplay } from "swiper/modules"
-
-interface Slide {
-  title?: string
-  subtitle?: string
-  description?: string
-  image: string
-  logo?: string
-  bgColor?: string
-  textColor?: string
-}
+import type { Slide } from "~/interface/slide"
 
 const { slides } = defineProps<{
   slides: Slide[]
@@ -26,7 +17,7 @@ const { slides } = defineProps<{
       :pagination="{ clickable: true }"
       :autoplay="{ delay: 4000, disableOnInteraction: false }"
       loop
-      class="rounded-sm overflow-hidden w-full h-[345px]"
+      class="rounded-sm overflow-hidden w-full h-[21.5625rem]"
     >
       <SwiperSlide
         v-for="(slide, i) in slides"
@@ -49,7 +40,7 @@ const { slides } = defineProps<{
                 v-if="slide.logo"
                 :src="slide.logo"
                 alt="logo"
-                class="w-[45px]"
+                class="w-[2.8125rem]"
               />
               <p
                 v-if="slide.subtitle"
@@ -61,14 +52,14 @@ const { slides } = defineProps<{
 
             <h2
               v-if="slide.title"
-              class="text-[48px] py-2 font-semibold leading-[1.3]"
+              class="text-[3rem] py-2 font-semibold leading-[1.3]"
             >
               {{ slide.title }}
             </h2>
 
             <p
               v-if="slide.description"
-              class="text-base max-w-[400px]"
+              class="text-base max-w-[25rem]"
             >
               {{ slide.description }}
             </p>
@@ -84,7 +75,7 @@ const { slides } = defineProps<{
           <img
             :src="slide.image"
             alt="slide"
-            class="w-[400px] object-contain"
+            class="w-[25rem] object-contain"
           />
         </div>
       </SwiperSlide>
@@ -96,21 +87,21 @@ const { slides } = defineProps<{
 .swiper-pagination-bullet {
   background-color: #808080;
   opacity: 1;
-  width: 12px;
-  height: 12px;
+  width: 0.75rem;
+  height: 0.75rem;
   border-radius: 50%;
-  margin: 0 5px !important;
+  margin: 0 0.3125rem !important;
   transition: all 0.3s ease;
 }
 
 .swiper-pagination-bullet-active {
   background-color: #db4444;
-  border: 2px solid #f5f5f5;
+  border: 0.125rem solid #f5f5f5;
   transform: scale(1.3);
 }
 
 .swiper-pagination {
-  bottom: 18px !important;
+  bottom: 1.125rem !important;
   display: flex;
   justify-content: center;
   align-items: center;
