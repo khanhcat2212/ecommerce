@@ -1,31 +1,53 @@
 <script setup lang="ts">
 import { Eye, Heart, Star } from "lucide-vue-next"
+import { ref } from "vue"
 
-const { title, image, price, oldPrice, discount, rating, ratenum } =
-  defineProps({
-    title: { type: String, default: "" },
-    image: { type: String, default: "" },
-    price: { type: String, default: "" },
-    oldPrice: { type: String, default: "" },
-    discount: { type: String, default: "" },
-    rating: { type: Number, default: 0 },
-    ratenum: { type: Number, default: 0 },
-    icon: { type: Object, default: null },
-    description: { type: String, default: "" },
-  })
+type Variant = "primary" | "secondary"
+
+const {
+  title,
+  image,
+  price,
+  oldPrice,
+  discount,
+  rating,
+  ratenum,
+  colors,
+  variant,
+} = defineProps({
+  variant: {
+    type: String as () => Variant,
+    default: "primary",
+  },
+  title: { type: String, default: "" },
+  image: { type: String, default: "" },
+  price: { type: String, default: "" },
+  oldPrice: { type: String, default: "" },
+  discount: { type: String, default: "" },
+  rating: { type: Number, default: 0 },
+  ratenum: { type: Number, default: 0 },
+  colors: {
+    type: Array as () => string[],
+    default: () => [],
+  },
+})
+
+const selectedColor = ref<string | null>(null)
 </script>
 
 <template>
   <div class="group relative">
+    <!-- Ảnh -->
     <div class="relative">
       <div
-        class="relative rounded-xs bg-grey-100 hover:shadow-sm transition p-4 w-[270px] h-[250px] flex items-center justify-center"
+        class="relative rounded-sm bg-grey-100 hover:shadow-sm transition p-4 w-[270px] h-[250px] flex items-center justify-center"
       >
         <img
           :src="image"
           alt=""
           class="w-full h-[180px] object-contain"
         />
+
         <span
           v-if="discount"
           class="absolute top-2.5 left-3 text-[12px] font-medium bg-red-500 text-white rounded-md px-3 py-1"
@@ -33,6 +55,7 @@ const { title, image, price, oldPrice, discount, rating, ratenum } =
           -{{ discount }}
         </span>
 
+        <!-- icons -->
         <div
           class="absolute top-3 right-3 flex flex-col gap-2.5 opacity-0 group-hover:opacity-100 transition"
         >
@@ -57,16 +80,48 @@ const { title, image, price, oldPrice, discount, rating, ratenum } =
       </div>
     </div>
 
-    <h3 class="mt-4 text-[16px]] font-medium text-black">{{ title }}</h3>
+    <!-- Tiêu đề -->
+    <h3 class="mt-4 text-[16px] font-medium text-black">{{ title }}</h3>
 
-    <div class="mt-2 flex items-center gap-2">
-      <span class="text-red-500 font-semibold">{{ price }}</span>
-      <span class="ml-2 text-grey-300 line-through text-sm">
-        {{ oldPrice }}
-      </span>
+    <div
+      class="mt-2 flex items-center gap-2 flex-wrap"
+      :class="{ 'justify-between': variant === 'primary' }"
+    >
+      <div class="flex items-center gap-2">
+        <span class="text-red-500 font-semibold">{{ price }}</span>
+
+        <span
+          v-if="variant === 'primary' && oldPrice"
+          class="text-grey-300 line-through text-sm"
+        >
+          {{ oldPrice }}
+        </span>
+      </div>
+
+      <div
+        v-if="variant === 'secondary' && rating"
+        class="flex items-center"
+      >
+        <div class="flex w-[100px] gap-x-1.5">
+          <Star
+            v-for="n in 5"
+            :key="n"
+            :class="
+              n <= rating
+                ? 'text-yellow-500 fill-yellow-500'
+                : 'text-grey-300 fill-grey-300'
+            "
+            class="w-4 h-4"
+          />
+        </div>
+        <span class="ml-2 text-grey-300 text-[14px]">({{ ratenum }})</span>
+      </div>
     </div>
 
-    <div class="flex items-center mt-2">
+    <div
+      v-if="variant === 'primary' && rating"
+      class="mt-2 flex items-center"
+    >
       <div class="flex w-[100px] gap-x-1.5">
         <Star
           v-for="n in 5"
@@ -79,8 +134,37 @@ const { title, image, price, oldPrice, discount, rating, ratenum } =
           class="w-4 h-4"
         />
       </div>
-
       <span class="ml-2 text-grey-300 text-[14px]">({{ ratenum }})</span>
+    </div>
+
+    <div
+      v-if="colors.length && variant === 'secondary'"
+      class="mt-3 flex gap-2"
+    >
+      <div
+        v-for="(color, index) in colors"
+        :key="index"
+        class="relative w-[20px] h-[20px] cursor-pointer flex items-center justify-center"
+        @click="selectedColor = color"
+      >
+        <div
+          class="w-full h-full rounded-full"
+          :style="{ backgroundColor: color }"
+        ></div>
+
+        <div
+          v-if="selectedColor === color"
+          class="absolute inset-0 rounded-full flex items-center justify-center"
+        >
+          <div
+            class="w-full h-full rounded-full border-2 border-black flex items-center justify-center box-border"
+          >
+            <div
+              class="w-full h-full rounded-full border-2 border-white box-border"
+            ></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
