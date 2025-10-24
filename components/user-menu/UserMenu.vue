@@ -1,22 +1,35 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import { User } from "lucide-vue-next"
+import { onClickOutside } from "@vueuse/core"
 import { MenuItems } from "~/constants/menuItems"
 
 const isOpen = ref(false)
+const menuRef = ref<HTMLElement | null>(null)
 
 const toggleMenu = () => {
   isOpen.value = !isOpen.value
 }
+
+onClickOutside(menuRef, () => {
+  isOpen.value = false
+})
 </script>
 
 <template>
-  <div class="relative">
+  <div
+    ref="menuRef"
+    class="relative"
+  >
     <button
-      class="group w-8 h-8 rounded-full flex items-center justify-center hover:bg-red-500 transition"
+      class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-red-500 transition"
+      :class="{
+        'bg-red-500 text-white': isOpen,
+        'hover:bg-red-500 hover:text-white': !isOpen,
+      }"
       @click="toggleMenu"
     >
-      <User class="w-5 h-5 group-hover:text-white" />
+      <User class="w-5 h-5" />
     </button>
 
     <!-- Dropdown -->
@@ -42,7 +55,7 @@ const toggleMenu = () => {
               :is="item.icon"
               class="w-6 h-6"
             />
-            <span class="text-[15px]">{{ item.label }}</span>
+            <span class="text-[.875rem]">{{ item.label }}</span>
           </li>
         </ul>
       </div>

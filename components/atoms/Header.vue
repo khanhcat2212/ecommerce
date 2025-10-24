@@ -1,8 +1,20 @@
 <script setup lang="ts">
 import { Heart, ShoppingCart } from "lucide-vue-next"
+import { useRoute, useRouter } from "vue-router"
 import Input from "@/components/input/Input.vue"
 import UserMenu from "@/components/user-menu/UserMenu.vue"
 import { navLinks } from "~/constants/navLinks"
+
+const route = useRoute()
+const router = useRouter()
+
+const goTo = (path: string) => {
+  router.push(path)
+}
+
+const isActive = (path: string) => {
+  return route.path === path
+}
 </script>
 
 <template>
@@ -28,14 +40,19 @@ import { navLinks } from "~/constants/navLinks"
         <h1 class="text-[1.5rem] font-bold">Exclusive</h1>
 
         <nav class="flex gap-8 text-black text-[1rem] font-normal">
-          <a
+          <button
             v-for="(link, index) in navLinks"
             :key="index"
-            :href="link.href"
-            class="relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-grey-300 after:transition-all after:duration-200 hover:after:w-full hover:text-grey-300"
+            class="relative text-[16px] font-normal text-black transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-grey-300 after:transition-all after:duration-300 after:ease-in-out hover:after:w-full"
+            @click="goTo(link.path)"
           >
             {{ link.label }}
-          </a>
+            <!-- underline when active -->
+            <span
+              v-if="isActive(link.path)"
+              class="absolute left-0 -bottom-1 w-full h-[1.5px] bg-grey-300"
+            ></span>
+          </button>
         </nav>
 
         <!-- Search box -->

@@ -1,11 +1,11 @@
 export interface NavLink {
   label: string
-  href: string
+  path: string
 }
 
 export const navLinks: NavLink[] = [
-  { label: "Home", href: "/" },
-  { label: "Contact", href: "/contact" },
-  { label: "About", href: "/about" },
-  { label: "Sign Up", href: "/signup" },
+  { label: "Home", path: "/" },
+  { label: "Contact", path: "/contact" },
+  { label: "About", path: "/about" },
+  { label: "Sign Up", path: "/signup" },
 ]
