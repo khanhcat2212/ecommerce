@@ -1,20 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue"
-import { User, ShoppingBag, XCircle, Star, LogOut } from "lucide-vue-next"
+import { User } from "lucide-vue-next"
+import { MenuItems } from "~/constants/menuItems"
 
 const isOpen = ref(false)
 
 const toggleMenu = () => {
   isOpen.value = !isOpen.value
 }
-
-const menuItems = [
-  { icon: User, label: "Manage My Account" },
-  { icon: ShoppingBag, label: "My Order" },
-  { icon: XCircle, label: "My Cancellations" },
-  { icon: Star, label: "My Reviews" },
-  { icon: LogOut, label: "Logout" },
-]
 </script>
 
 <template>
@@ -41,13 +34,13 @@ const menuItems = [
       >
         <ul class="py-3">
           <li
-            v-for="(item, i) in menuItems"
+            v-for="(item, i) in MenuItems"
             :key="i"
             class="flex items-center gap-3 px-4 py-2 hover:bg-white/10 cursor-pointer transition"
           >
             <component
               :is="item.icon"
-              class="w-5 h-5"
+              class="w-6 h-6"
             />
             <span class="text-[15px]">{{ item.label }}</span>
           </li>
