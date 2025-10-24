@@ -65,17 +65,17 @@ const descriptionClasses = computed(() => {
     <div class="flex flex-col items-center justify-center h-full space-y-4">
       <div class="relative flex items-center justify-center">
         <div
-          class="w-[5rem] h-[5rem] rounded-full bg-gray-200 flex items-center justify-center transition-all duration-300"
+          class="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center transition-all duration-300"
           :class="variant === 'achievement' ? 'group-hover:bg-white/30' : ''"
         >
           <div
-            class="w-[3.625rem] h-[3.625rem] rounded-full bg-black flex items-center justify-center transition-all duration-300"
+            class="w-14.5 h-14.5 rounded-full bg-black flex items-center justify-center transition-all duration-300"
             :class="variant === 'achievement' ? 'group-hover:bg-white' : ''"
           >
             <component
               :is="icon"
               v-if="icon"
-              class="w-[2rem] h-[2rem] text-white transition-colors duration-300"
+              class="w-8 h-8 text-white transition-colors duration-300"
               :class="variant === 'achievement' ? 'group-hover:text-black' : ''"
             />
           </div>

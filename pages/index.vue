@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { definePageMeta } from "#imports"
+import PromoBanner from "~/components/banner/PromoBanner.vue"
+import FeatureCard from "~/components/card/FeatureCard.vue"
 import HeroBanner from "~/components/sections/HeroBanner.vue"
+import NewArrival from "~/components/sections/NewArrival.vue"
 import { categories } from "~/constants/categories"
 import { products } from "~/constants/products"
+import { services } from "~/constants/services"
 
 definePageMeta({ layout: "default" })
 </script>
@@ -37,6 +41,8 @@ definePageMeta({ layout: "default" })
       />
     </div>
 
+    <PromoBanner />
+
     <div class="py-12">
       <ProductList
         variant="scroll"
@@ -44,6 +50,19 @@ definePageMeta({ layout: "default" })
         caption="Explore Our Products"
         subject="Our Products"
         :row="2"
+      />
+    </div>
+
+    <NewArrival />
+
+    <div class="flex items-center justify-center gap-20 pt-11">
+      <FeatureCard
+        v-for="(service, index) in services"
+        :key="index"
+        variant="service"
+        :title="service.title"
+        :icon="service.icon"
+        :description="service.description"
       />
     </div>
   </div>

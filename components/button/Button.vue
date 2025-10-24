@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue"
 
-type Variant = "primary" | "secondary" | "thirdary"
+type Variant = "primary" | "secondary" | "thirdary" | "quaternary"
 
 const { variant, size, block } = defineProps({
   variant: {
@@ -21,11 +21,11 @@ const { variant, size, block } = defineProps({
 const basePadding = computed(() => {
   switch (size) {
     case "sm":
-      return "px-[3rem] py-[1rem]"
+      return "px-[48px] py-[16px]"
     case "md":
-      return "px-[5.4375rem] py-[.5rem]"
+      return "px-[87px] py-[8px]"
     case "lg":
-      return "px-[7.625rem] py-[1rem]"
+      return "px-[122px] py-[16px]"
     default:
       return variant === "secondary"
         ? "px-3 py-1.5 text-sm"
@@ -36,11 +36,13 @@ const basePadding = computed(() => {
 const variantClasses = computed(() => {
   switch (variant) {
     case "secondary":
-      return "bg-black text-white text-[1rem] hover:bg-gray-900 cursor-pointer"
+      return "bg-black text-white text-[16px] hover:bg-gray-900 cursor-pointer"
     case "thirdary":
-      return "bg-white text-black text-[1rem] border border-grey-900 hover:bg-white-500 cursor-pointer"
+      return "bg-white text-black text-[16px] border border-grey-900 hover:bg-white-500 cursor-pointer"
+    case "quaternary":
+      return "rounded-sm bg-green-900 text-white text-[16px] hover:bg-red-400 cursor-pointer"
     default: // primary
-      return "rounded-sm bg-red-500 text-white text-[1rem] hover:bg-red-400 cursor-pointer"
+      return "rounded-sm bg-red-500 text-white text-[16px] hover:bg-red-400 cursor-pointer"
   }
 })
 </script>
@@ -48,7 +50,7 @@ const variantClasses = computed(() => {
 <template>
   <button
     :class="[
-      'overflow-hidden font-medium transition-colors duration-200 text-[1rem]',
+      'overflow-hidden font-medium transition-colors duration-200 text-[16px]',
       basePadding,
       variantClasses,
       block && 'w-full',

@@ -6,7 +6,7 @@ import { socials } from "~/constants/socials"
 </script>
 
 <template>
-  <footer class="bg-black text-white h-110">
+  <footer class="bg-black text-white h-110 mt-36">
     <div
       class="max-w-7xl mx-auto px-14 py-18 grid grid-cols-1 md:grid-cols-5 gap-12"
     >
