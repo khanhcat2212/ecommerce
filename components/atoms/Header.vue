@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { Heart, ShoppingCart, User } from "lucide-vue-next"
+import { Heart, ShoppingCart } from "lucide-vue-next"
 import Input from "@/components/input/Input.vue"
+import UserMenu from "@/components/user-menu/UserMenu.vue"
+import { navLinks } from "~/constants/navLinks"
 </script>
 
 <template>
@@ -23,32 +25,16 @@ import Input from "@/components/input/Input.vue"
       <div
         class="max-w-7xl mx-auto flex justify-between items-baseline py-4 px-4 pt-9"
       >
-        <h1 class="text-[24px] font-bold">Exclusive</h1>
+        <h1 class="text-[1.5rem] font-bold">Exclusive</h1>
 
-        <nav class="flex gap-8 text-grey-700 text-[1rem] font-normal">
+        <nav class="flex gap-8 text-black text-[1rem] font-normal">
           <a
-            href="#"
-            class="hover:text-grey-300"
+            v-for="(link, index) in navLinks"
+            :key="index"
+            :href="link.href"
+            class="relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-grey-300 after:transition-all after:duration-200 hover:after:w-full hover:text-grey-300"
           >
-            Home
-          </a>
-          <a
-            href="#"
-            class="hover:text-grey-300"
-          >
-            Contact
-          </a>
-          <a
-            href="#"
-            class="hover:text-grey-300"
-          >
-            About
-          </a>
-          <a
-            href="#"
-            class="hover:text-grey-300"
-          >
-            Sign Up
+            {{ link.label }}
           </a>
         </nav>
 
@@ -62,35 +48,13 @@ import Input from "@/components/input/Input.vue"
             />
           </div>
 
-          <Heart class="w-6 h-6 ml-2" />
+          <Heart class="w-6 h-6 ml-2 cursor-pointer" />
 
-          <ShoppingCart class="w-6 h-6 ml-1" />
+          <ShoppingCart class="w-6 h-6 ml-1 cursor-pointer" />
 
-          <User class="w-6 h-6 ml-1" />
+          <UserMenu />
         </div>
       </div>
     </div>
   </header>
 </template>
-
-<style>
-nav a {
-  position: relative;
-  transition: color 0.2s;
-}
-
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.25rem;
-  width: 0;
-  height: 0.125rem;
-  background-color: #999;
-  transition: width 0.2s;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-</style>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-vue-next"
 import Input from "@/components/input/Input.vue"
+import { accounts } from "~/constants/accounts"
+import { quickLinks } from "~/constants/quickLinks"
+import { socials } from "~/constants/socials"
 </script>
 
 <template>
@@ -10,9 +12,9 @@ import Input from "@/components/input/Input.vue"
     >
       <!-- Exclusive -->
       <div>
-        <h2 class="text-[24px] font-semibold pb-4">Exclusive</h2>
-        <p class="text-[20px] font-medium pb-6">Subscribe</p>
-        <p class="text-grey-100 text-[16px] pb-4">
+        <h2 class="text-[1.5rem] font-semibold pb-4">Exclusive</h2>
+        <p class="text-[1.25rem] font-medium pb-6">Subscribe</p>
+        <p class="text-grey-100 text-[1rem] pb-4">
           Get 10% off your first order
         </p>
         <Input
@@ -35,12 +37,16 @@ import Input from "@/components/input/Input.vue"
       <!-- Account -->
       <div>
         <h3 class="text-[1.25rem] font-semibold py-1 pb-6">Account</h3>
+
         <ul class="space-y-4 text-grey-100">
-          <li><a href="#">My Account</a></li>
-          <li><a href="#">Login / Register</a></li>
-          <li><a href="#">Cart</a></li>
-          <li><a href="#">Wishlist</a></li>
-          <li><a href="#">Shop</a></li>
+          <li
+            v-for="(account, index) in accounts"
+            :key="index"
+          >
+            <a :href="account.href">
+              {{ account.label }}
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -48,17 +54,21 @@ import Input from "@/components/input/Input.vue"
       <div>
         <h3 class="text-[1.25rem] font-semibold py-1 pb-6">Quick Link</h3>
         <ul class="space-y-4 text-grey-100">
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms Of Use</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Contact</a></li>
+          <li
+            v-for="(quickLink, index) in quickLinks"
+            :key="index"
+          >
+            <a :href="quickLink.href">
+              {{ quickLink.label }}
+            </a>
+          </li>
         </ul>
       </div>
 
       <!-- Download App -->
       <div>
         <h3 class="text-[1.25rem] font-semibold py-1 pb-6">Download App</h3>
-        <p class="text-grey-100 text-[12px] pb-4">
+        <p class="text-grey-100 text-[.75rem] pb-4">
           Save $3 with App New User Only
         </p>
         <div class="flex items-center gap-3 pb-6">
@@ -82,40 +92,16 @@ import Input from "@/components/input/Input.vue"
         </div>
 
         <div class="flex items-center gap-8">
-          <Facebook class="w-5 h-5 text-white" />
-
-          <Twitter class="w-5 h-5 text-white" />
-
-          <Instagram class="w-5 h-5 text-white" />
-
-          <Linkedin class="w-5 h-5 text-white" />
-        </div>
-
-        <!-- Social -->
-        <div class="flex space-x-4 text-grey-100">
           <a
-            href="#"
-            class="hover:text-white"
+            v-for="(social, index) in socials"
+            :key="index"
+            :href="social.href"
+            target="_blank"
           >
-            <i class="fa-brands fa-facebook-f"></i>
-          </a>
-          <a
-            href="#"
-            class="hover:text-white"
-          >
-            <i class="fa-brands fa-twitter"></i>
-          </a>
-          <a
-            href="#"
-            class="hover:text-white"
-          >
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-          <a
-            href="#"
-            class="hover:text-white"
-          >
-            <i class="fa-brands fa-linkedin-in"></i>
+            <component
+              :is="social.icon"
+              class="w-5 h-5 text-white"
+            />
           </a>
         </div>
       </div>
@@ -123,7 +109,7 @@ import Input from "@/components/input/Input.vue"
 
     <!-- Bottom bar -->
     <div
-      class="border-t border-grey-900 text-center pb-4 pt-3 text-grey-900 text-[16px]"
+      class="border-t border-grey-900 text-center pb-4 pt-3 text-grey-900 text-[1rem]"
     >
       © Copyright Rimel 2022. All rights reserved
     </div>

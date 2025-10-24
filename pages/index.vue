@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Footer from "~/components/atoms/Footer.vue"
+import Layout from "~/components/layout/Layout.vue"
 </script>
 
 <template>
   <div>
-    <Footer />
+    <Layout />
   </div>
 </template>
