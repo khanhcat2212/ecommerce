@@ -40,7 +40,7 @@ const { slides } = defineProps<{
                 v-if="slide.logo"
                 :src="slide.logo"
                 alt="logo"
-                class="w-[2.8125rem]"
+                class="w-11.25"
               />
               <p
                 v-if="slide.subtitle"
@@ -59,7 +59,7 @@ const { slides } = defineProps<{
 
             <p
               v-if="slide.description"
-              class="text-base max-w-[25rem]"
+              class="text-base max-w-100"
             >
               {{ slide.description }}
             </p>
@@ -75,7 +75,7 @@ const { slides } = defineProps<{
           <img
             :src="slide.image"
             alt="slide"
-            class="w-[25rem] object-contain"
+            class="w-100 object-contain"
           />
         </div>
       </SwiperSlide>

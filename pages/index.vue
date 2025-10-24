@@ -55,7 +55,7 @@ definePageMeta({ layout: "default" })
 
     <NewArrival />
 
-    <div class="flex items-center justify-center gap-20 pt-11">
+    <div class="flex items-center justify-center gap-20 pt-11 pb-12">
       <FeatureCard
         v-for="(service, index) in services"
         :key="index"
