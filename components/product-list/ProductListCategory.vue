@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { ref, computed } from "vue"
-import Button from "@/components/button/Button.vue"
-import ProductCard from "@/components/card/ProductCard.vue"
-import type { Product } from "~/interface/product"
+import CategoryCard from "../card/CategoryCard.vue"
+import type { Category } from "~/interface/category"
 
-const { products, row } = defineProps({
-  products: {
-    type: Array as () => Product[],
+const { categories, row } = defineProps({
+  categories: {
+    type: Array as () => Category[],
     default: () => [],
   },
   row: { type: Number, default: 1 },
@@ -35,28 +34,13 @@ const gridStyle = computed(() => ({
       :style="gridStyle"
       style="grid-auto-flow: column"
     >
-      <ProductCard
-        v-for="(product, i) in products"
+      <CategoryCard
+        v-for="(category, i) in categories"
         :key="i"
         variant="secondary"
-        :title="product.title"
-        :image="product.image"
-        :price="product.price"
-        :old-price="product.oldPrice"
-        :discount="product.discount"
-        :rating="product.rating"
-        :ratenum="product.ratenum"
-        :colors="product.colors"
+        :title="category.title"
+        :icon="category.icon"
       />
-    </div>
-
-    <div class="flex justify-center py-6">
-      <Button
-        variant="primary"
-        size="sm"
-      >
-        View All Products
-      </Button>
     </div>
   </div>
 </template>

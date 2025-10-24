@@ -32,7 +32,7 @@ const gridStyle = computed(() => ({
 
 <template>
   <div
-    class="grid gap-x-7 gap-y-8 overflow-hidden"
+    class="grid gap-x-12 gap-y-8 overflow-hidden py-8"
     :style="gridStyle"
   >
     <ProductCard

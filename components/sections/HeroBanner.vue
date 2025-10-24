@@ -6,7 +6,7 @@ import { banners } from "~/constants/banners"
 </script>
 
 <template>
-  <section class="flex bg-white">
+  <section class="flex bg-white mb-16">
     <!-- Sidebar -->
     <aside class="w-1/4 border-r border-gray-200">
       <ul class="mt-8">
