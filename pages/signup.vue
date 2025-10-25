@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { definePageMeta } from "#imports"
+import { definePageMeta, useGoogleSignIn } from "#imports"
 import Button from "~/components/button/Button.vue"
 import Input from "~/components/input/Input.vue"
 
 definePageMeta({ layout: "authen" })
+
+const handleGoogleLogin = async () => {
+  await useGoogleSignIn()
+}
 </script>
 
 <template>
@@ -41,6 +45,7 @@ definePageMeta({ layout: "authen" })
       variant="thirdary"
       size="lg"
       class="mt-4"
+      @click="handleGoogleLogin"
     >
       <div class="flex items-center justify-center gap-4">
         <img
