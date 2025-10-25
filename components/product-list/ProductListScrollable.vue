@@ -36,17 +36,10 @@ const gridStyle = computed(() => ({
       style="grid-auto-flow: column"
     >
       <ProductCard
-        v-for="(product, i) in products"
-        :key="i"
+        v-for="(product, index) in products"
+        :key="product.id || index"
+        :product="product"
         variant="secondary"
-        :title="product.title"
-        :image="product.image"
-        :price="product.price"
-        :old-price="product.oldPrice"
-        :discount="product.discount"
-        :rating="product.rating"
-        :ratenum="product.ratenum"
-        :colors="product.colors"
       />
     </div>
 

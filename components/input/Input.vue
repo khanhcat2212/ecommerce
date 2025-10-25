@@ -6,6 +6,8 @@ type Variant = "underline" | "box" | "search" | "form" | "direct" | "code"
 
 const emit = defineEmits(["update:modelValue"])
 
+defineOptions({ inheritAttrs: false })
+
 const { variant, icon, placeholder, modelValue } = defineProps({
   variant: {
     type: String as () => Variant,
@@ -37,7 +39,7 @@ const baseClass = computed(() => {
     case "direct":
       return "bg-black border border-white rounded-sm px-4 py-3 flex items-center gap-2"
     case "code":
-      return "border border-black rounded-sm px-4 py-3 flex items-center"
+      return "border border-black rounded-sm px-5 py-[15px] flex items-center"
     default:
       return "border border-black rounded-sm px-4 py-3 flex items-center"
   }
@@ -63,6 +65,7 @@ const inputClass = computed(() => {
 <template>
   <div :class="['w-full', baseClass]">
     <input
+      v-bind="$attrs"
       :placeholder="placeholder"
       :value="modelValue"
       class="w-full outline-none text-[1rem]"

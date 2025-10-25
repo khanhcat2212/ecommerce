@@ -1,19 +1,11 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import ProductCard from "@/components/card/ProductCard.vue"
+import type { Product } from "~/interface/product"
 
 const { products, row } = defineProps({
   products: {
-    type: Array as () => Array<{
-      title: string
-      image: string
-      price: string
-      oldPrice?: string
-      discount?: string
-      rating?: number
-      ratenum?: number
-      colors?: string[]
-    }>,
+    type: Array as () => Product[],
     default: () => [],
   },
   row: {
@@ -32,21 +24,14 @@ const gridStyle = computed(() => ({
 
 <template>
   <div
-    class="grid gap-x-12 gap-y-8 overflow-hidden py-8"
+    class="grid gap-x-14 gap-y-8 py-8"
     :style="gridStyle"
   >
     <ProductCard
       v-for="(product, index) in visibleProducts"
-      :key="index"
+      :key="product.id || index"
+      :product="product"
       variant="primary"
-      :title="product.title"
-      :image="product.image"
-      :price="product.price"
-      :old-price="product.oldPrice"
-      :discount="product.discount"
-      :rating="product.rating"
-      :ratenum="product.ratenum"
-      :colors="product.colors"
     />
   </div>
 </template>

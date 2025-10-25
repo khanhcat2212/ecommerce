@@ -43,14 +43,14 @@ const isActive = (path: string) => {
           <button
             v-for="(link, index) in navLinks"
             :key="index"
-            class="relative text-[16px] font-normal text-black transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:w-0 after:bg-grey-300 after:transition-all after:duration-300 after:ease-in-out hover:after:w-full"
+            class="relative text-[1rem] font-normal text-black transition-colors duration-300 after:absolute after:left-0 after:-bottom-1 after:h-[1..3125rem] after:w-0 after:bg-grey-300 after:transition-all after:duration-300 after:ease-in-out hover:after:w-full"
             @click="goTo(link.path)"
           >
             {{ link.label }}
             <!-- underline when active -->
             <span
               v-if="isActive(link.path)"
-              class="absolute left-0 -bottom-1 w-full h-[1.5px] bg-grey-300"
+              class="absolute left-0 -bottom-1 w-full h-[1..3125rem] bg-grey-300"
             ></span>
           </button>
         </nav>
